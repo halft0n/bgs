@@ -7,6 +7,10 @@
 
 #define RANDOM_BUFFER_SIZE (65535)
 
+
+
+
+
 namespace masa_video_compression {
 
 class VIBE {
