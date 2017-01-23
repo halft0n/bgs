@@ -3,6 +3,8 @@
 
 #include "utils.h"
 #include <opencv2/core/core.hpp>
+#include <iostream>
+#include <string>
 #include <memory>
 
 #define RANDOM_BUFFER_SIZE (65535)

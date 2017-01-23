@@ -1,17 +1,15 @@
-#include "utils.h"
 #include <stdio.h>
-#include <string>
+#include "utils.h"
+using namespace std;
 
 namespace masa_video_compression {
-bool GetActiveClip(const std::string &max_area_file_name, const float area_thd,
+bool GetActiveClip(const string &max_area_file_name, const float area_thd,
                    const int length_thd, const int dist_thd,
-                   std::vector<int> &start_pos, std::vector<int> &end_pos) {
-
+                   vector<int> &start_pos, vector<int> &end_pos) {
   FILE *max_area_file = fopen(max_area_file_name.c_str(), "r");
-
   if (!max_area_file)
     return false;
-  std::vector<float> max_area_arr;
+  vector<float> max_area_arr;
   max_area_arr.push_back(0);
   while (!feof(max_area_file)) {
     float area;
@@ -34,8 +32,8 @@ bool GetActiveClip(const std::string &max_area_file_name, const float area_thd,
   // printf("%d %d\n", start_pos[i], end_pos[i]);
   //}
 
-  std::vector<int>::iterator start_iter = start_pos.begin();
-  std::vector<int>::iterator end_iter = end_pos.begin();
+  vector<int>::iterator start_iter = start_pos.begin();
+  vector<int>::iterator end_iter = end_pos.begin();
   for (; start_iter != start_pos.end();) {
     if (*end_iter - *start_iter < length_thd) {
       start_iter = start_pos.erase(start_iter);
@@ -71,3 +69,4 @@ bool GetActiveClip(const std::string &max_area_file_name, const float area_thd,
   return true;
 }
 }
+

@@ -1,6 +1,9 @@
 #ifndef VIDEO_COMPRESSION_UTILS_H
 #define VIDEO_COMPRESSION_UTILS_H
+#include <iostream>
+#include <string>
 #include <vector>
+#include <stdio.h>
 #define DISALLOW_COPY_AND_ASSIGN(TypeName)                                     \
   TypeName(const TypeName &);                                                  \
   void operator=(const TypeName &)
