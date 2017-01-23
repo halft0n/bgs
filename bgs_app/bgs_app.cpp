@@ -11,10 +11,6 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <fstream>
 
-int cnt;
-int fore_cnt;
-std::ofstream fout("./cpu.txt");
-
 int main(int argc, char **argv) {
   if (argc < 2) {
 	std::cout<<"Usage: bgs_app <video file name>\n";
@@ -42,33 +38,22 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  // if (channels == 1) {
-  // cv::cvtColor(frame, frame, CV_BGR2GRAY);
+  //if (channels == 1) {
+  //  cv::cvtColor(frame, frame, CV_BGR2GRAY);
   //} else {
-  // cv::cvtColor(frame, frame, CV_BGR2HSV);
+  //  cv::cvtColor(frame, frame, CV_BGR2HSV);
   //}
   cv::Mat gray;
   cv::cvtColor(frame, gray, CV_BGR2GRAY);
 
-  //long now = clock();
   // vibe_bgs.init(frame);
-  fout<<"video information:"<<argv[1]<<std::endl;
-  //long init_start;
-  //init_start = clock();
   vibe_bgs.init(gray);
-  //fout<<"init time: "<<int(((double)(clock() - init_start))
-	//	/ CLOCKS_PER_SEC * 1000)<<"ms\n";
-  cnt = 1;
+  
   // cv::Mat gray = frame.clone();
   while (!frame.empty()) {
     cv::cvtColor(frame, gray, CV_BGR2GRAY);
-	long start = clock();
+	
     vibe_bgs.update(gray);
-	//fout<<"NO."<<cnt<<" time: "<<int(((double)(clock() - start))
-	//	/ CLOCKS_PER_SEC * 1000)<<"ms\n";
-	fout<<"NO."<<cnt<<"num:"<<fore_cnt<<std::endl;
-	cnt++;
-
 	cv::Mat foreground = vibe_bgs.getMask();
 
     // frame.copyTo(foreground, vibe_bgs.getMask());
@@ -87,8 +72,6 @@ int main(int argc, char **argv) {
   }
   vwriter.release();
   printf("Release video writer!\n");
-  //printf("运行时间为：%dms\n\n", int(((double)(clock() - now))
-	//	/ CLOCKS_PER_SEC * 1000));//输出时间
   return 0;
 }
 
