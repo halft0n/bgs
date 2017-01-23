@@ -6,10 +6,10 @@ Compile = g++
 bgs_app : $(OBJ)
 	g++ -o bgs_app $(OBJ) -I $(INCLUDE) $(OPENCVLIB) $(CPPFLAG)
 bgs_app.o : bgs_app.cpp utils.h vibe.h
-	g++ -c bgs_app.cpp -I $(INCLUDE) $(CPP_FLAG)
+	g++ -c bgs_app.cpp $(CPP_FLAG)
 vibe.o : vibe.cpp vibe.h utils.h
-	g++ -c vibe.cpp -I $(INCLUDE) $(CPP_FLAG)
+	g++ -c vibe.cpp $(CPP_FLAG)
 utils.o  : utils.cpp utils.h
-	g++ -c utils.cpp -I $(INCLUDE) $(CPP_FLAG)
+	g++ -c utils.cpp $(CPP_FLAG)
 clean : 
 	rm bgs_app $(OBJ)
