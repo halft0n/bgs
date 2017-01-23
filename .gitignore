@@ -1,0 +1,5 @@
+/bgs_app/*.o
+/bgs_app/bgs_app
+/bgs_app_cuda/*.o
+/bgs_app_cuda/bgs_app_cuda
+

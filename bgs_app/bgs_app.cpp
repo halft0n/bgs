@@ -13,14 +13,12 @@
 
 int cnt;
 int fore_cnt;
-std::ofstream fout("D:\\cpu.txt");
+std::ofstream fout("./cpu.txt");
 
 int main(int argc, char **argv) {
   if (argc < 2) {
-	//argv[1]="D:/WorkSpace/VS2012/bgs_app/Release/201548211513.mp4";
-	//argv[1]="D:/WorkSpace/VS2012/bgs_app/Release/atm_stream_20153309304.mp4";
-    argv[1]="D:/bgs_app_cuda/camera1.wmv";
-	//return 1;
+	std::cout<<"Usage: bgs_app <video file name>\n";
+	return 1;
   }
   std::string filename = std::string(argv[1]);
   cv::VideoCapture cap(filename);

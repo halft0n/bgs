@@ -2,6 +2,7 @@
 #include <opencv2/core/core.hpp>
 #include <random>
 #include <ctime>
+#include <string>
 
 //extern int cnt;
 //int cnt_foreground = 0;
