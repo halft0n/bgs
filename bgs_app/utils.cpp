@@ -6,17 +6,9 @@ namespace masa_video_compression {
 bool GetActiveClip(const std::string &max_area_file_name, const float area_thd,
                    const int length_thd, const int dist_thd,
                    std::vector<int> &start_pos, std::vector<int> &end_pos) {
-//----------------altered by wyp---------------//
-  //FILE *max_area_file = fopen(max_area_file_name.c_str(), "r");
-  errno_t err_fopen;
 
-  FILE *max_area_file;
-  if((err_fopen = fopen_s(&max_area_file,max_area_file_name.c_str(), "r"))!=0)
-  {
-	  printf("open file failed!\n");
-	  return false;
-  }
-//----------------alter end-----------------------//
+  FILE *max_area_file = fopen(max_area_file_name.c_str(), "r");
+
   if (!max_area_file)
     return false;
   std::vector<float> max_area_arr;
